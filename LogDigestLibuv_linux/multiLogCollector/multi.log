@@ -1,0 +1,14 @@
+@400000003b4a39c2cafebabe   fatal: message\twith\ttabs
+@400000003b4a39c2cafebabe   fatal: message\twith\ttabs
+@400000003b4a39c2cafebabe   some message with spaces
+@400000003b4a39c2cafebabe   coolmsg
+@400000003b4a39c2cafebabe some msg
+@400000003b4a39c2cafeffff asdfasdfasdf
+@400000003b4a39c2cff asdfasdfasdf
+@400000003b4a39c2cff asdfasdfasdf
+@400000003b4a39c2cff ads
+@400000033d9a6b282f3dab78 bad request 
+@4000000550c0d5353c6b88ea wrong password
+@4000000783c049d55a7439ee Service disabled
+@400000087b4a9a867dbb36bf Account disabled
+@40000005cfdefc541f3eb88b wrong token
