@@ -43,7 +43,7 @@ Self-project with MIT-license, containing simple practices across platforms, cur
                 "-lws2_32",
                 "-liphlpapi",
                 "-luserenv",
-  - ],
+    ],
 - Sample "arg" for linux ubuntu building environment (task.json)
   - "args": [
 				"-fdiagnostics-color=always",
