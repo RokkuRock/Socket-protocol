@@ -10,7 +10,7 @@ A socket-network library with MIT-license, containing simple practices across Li
   1. Change Client.c, server.c port and IP setting (linux)
     - Client.c code: 
       ```c
-      -  int main() {
+      int main() {
 
           char *ip = "140.92.164.91"; // Change this to your ip address using ip a in linux terminal
 
