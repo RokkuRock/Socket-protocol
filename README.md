@@ -43,7 +43,7 @@ A socket-network library with MIT-license, containing simple practices across Li
     ```
   4. Execute connecting client on targeting server IP with another terminal:
     ```bash
-    ./client []
+    ./client 7000
     ```
     - Execution result should be shown like this:
     ```bash  
@@ -74,8 +74,8 @@ A socket-network library with MIT-license, containing simple practices across Li
     
     // Create the output directory if it doesn't exist
     struct stat st = {0};
-    if (stat("/home/vboxuser/Projects/TCP/output", &st) == -1) {    Change the directory path of stat"/home...output" according to your desired path
-        mkdir("/home/vboxuser/Projects/TCP/output", 0700);          Change the path to the same as stat "/" you specify
+    if (stat("/home/vboxuser/Projects/TCP/output", &st) == -1) {    // Change the directory path of stat"/home...output" according to your desired path
+        mkdir("/home/vboxuser/Projects/TCP/output", 0700);          // Change the path to the same as stat "/" you specify
     }
     }......rest of the code remain the same......
     ```
@@ -151,9 +151,10 @@ A socket-network library with MIT-license, containing simple practices across Li
     ```
   - Change the targeted listening path for DigestClient.c
     ```c
-    - ld_watch_multilog("/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log"); //Change the " " path to your multi.log file path
-    ```bash
+    ld_watch_multilog("/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log"); //Change the " " path to your multi.log file path
+    ```
   - Executing server-client transmission:
+    ```bash
     gcc LogParseServer.c -o LogParserServer -luv
     gcc DigestClient.c logdigest.c -o DigestClient -luv
     ./LogParserServer 
