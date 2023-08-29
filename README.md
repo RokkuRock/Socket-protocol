@@ -199,8 +199,8 @@ A socket-network library with MIT-license, containing simple practices across Li
 4. Sample "arg" for windows 10 environment (task.json)
   ```json
   "args": [
-                "${file}",
 		"-g",
+                "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I",
@@ -211,7 +211,7 @@ A socket-network library with MIT-license, containing simple practices across Li
                 "-lws2_32",
                 "-liphlpapi",
                 "-luserenv",
-    	],
+    ],
   ```
 - Sample "arg" for linux ubuntu building environment (task.json)
   ```json
