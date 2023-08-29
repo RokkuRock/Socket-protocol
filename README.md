@@ -182,7 +182,7 @@ A socket-network library with MIT-license, containing simple practices across Li
     - Add "@4000000783c049d55a7439ee Service disabled" this to the bottom line of code, make sure the format is correct (" "spacing, @ symbol should be same as above)
     - When finished editing, press ctrl+S to save the file, updated transmission result should be shown:
       ```bash
-      - Log file /home/vboxuser/Projects/LogDigestLibuv_linux/output/output2023-08-29.xml transmission completed!
+      Log file /home/vboxuser/Projects/LogDigestLibuv_linux/output/output2023-08-29.xml transmission completed!
         No client message received in one minute. Sleeping...
         No client message received in one minute. Sleeping...
         No client message received in one minute. Sleeping...
@@ -199,7 +199,7 @@ A socket-network library with MIT-license, containing simple practices across Li
 4. Sample "arg" for windows 10 environment (task.json)
   ```json
   "args": [
-				"-g",
+		"-g",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
@@ -211,20 +211,20 @@ A socket-network library with MIT-license, containing simple practices across Li
                 "-lws2_32",
                 "-liphlpapi",
                 "-luserenv",
-    ],
+    	],
   ```
 - Sample "arg" for linux ubuntu building environment (task.json)
   ```json
   "args": [
-				"-fdiagnostics-color=always",
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}",
-				"-luv",
-				"logdigest.c",
-				"cJSON.c",
-			], 
+		"-fdiagnostics-color=always",
+		"-g",
+		"${file}",
+		"-o",
+		"${fileDirname}/${fileBasenameNoExtension}",
+		"-luv",
+		"logdigest.c",
+		"cJSON.c",
+	], 
   ```
 
 # cJSONLogDigest_linux
@@ -233,13 +233,15 @@ A socket-network library with MIT-license, containing simple practices across Li
 - User Instruction of using cJSON Library and program execution
   - Change configuration of DigestClient.c:
     ```c
-    - const char *json_filename = "/home/vboxuser/Projects/AutoLogDigest_linux/serverConfig/serverConfig.json"; //Change the serverConfig.json Monitoring path
+    const char *json_filename = "/home/vboxuser/Projects/AutoLogDigest_linux/serverConfig/serverConfig.json"; //Change the serverConfig.json Monitoring path
+    ```
   - Change ld_watch_multilog path to monitor multi.log file changes
-    -  ld_watch_multilog("/home/vboxuser/Projects/cJSONLogDigest_linux/multiLogCollector/multi.log"); // change the " " path to your location of saving multi.log
+    ```	
+    ld_watch_multilog("/home/vboxuser/Projects/cJSONLogDigest_linux/multiLogCollector/multi.log"); // change the " " path to your location of saving multi.log
     ```
   - Change the serverConfig.json content to fit your environment:
     ```json
-    - { "IP": "127.0.0.1", "Port": 7000 } // change the value of "IP" and "Port" numbers to fit your network environment
+    { "IP": "127.0.0.1", "Port": 7000 } // change the value of "IP" and "Port" numbers to fit your network environment
     ```
   - Start executing LogParser and DigestClient:
     ```bash
@@ -264,7 +266,7 @@ A socket-network library with MIT-license, containing simple practices across Li
 - Certificate and private Key authentication is not finished yet, to be developed
 - Building Environment (vscode):
   ```json
-  - "args": [
+  "args": [
 				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",
@@ -282,9 +284,9 @@ A socket-network library with MIT-license, containing simple practices across Li
     ```
   - Generate key, certificate and signing certificate before executing program
     ```bash
-    cd myCertPem (if it doesn't exist, create a folder named myCertPem in your project directory)
+    cd myCertPem # (if it doesn't exist, create a folder named myCertPem in your project directory)
     openssl genpkey -algorithm RSA -out server.key
-    ..+......+.+......+.....+....+..............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+.....+.......+...........+....+......+..+.+......+.....+.+.........+.....+...+.......+......and more encryped message
+    ..+......+.+......+.....+....+..............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+.....+.......+...........+....+......+..+.+......+.....+.+.........+.....+...+.......+...... # and more encryped message
     openssl req -new -key server.key -out server.csr
     ```
     - Certificate configuration:
@@ -301,6 +303,7 @@ A socket-network library with MIT-license, containing simple practices across Li
       to be sent with your certificate request
       A challenge password []:1234  // enter any value of at least 4 bytes
       An optional company name []:  // can be left balnk
+      # most of the values above can be left blank
       ```
     - Signing Certificate with key:
       ```bash
@@ -325,12 +328,12 @@ A socket-network library with MIT-license, containing simple practices across Li
     ./sslClient 127.0.0.1 8081
     Enter the User Name : 
     ```
-    // server side for the present:
+    - server side for the current state:
     ```bash 
     Connection: 127.0.0.1:40026
     No certificates.
     ```
-    // client side to be processed with user input 
+    - client side to be processed with user input 
     ```bash
     Enter the User Name : aticle
     Enter the Password : 123
