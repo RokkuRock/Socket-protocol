@@ -200,17 +200,17 @@ A socket-network library with MIT-license, containing simple practices across Li
   ```json
   "args": [
 		"-g",
-                "${file}",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-I",
-                "C:\\vcpkg\\installed\\x64-windows\\include",
-                "-L",
-                "C:\\vcpkg\\installed\\x64-windows\\lib",
-                "-luv",
-                "-lws2_32",
-                "-liphlpapi",
-                "-luserenv",
+		"${file}",
+		"-o",
+		"${fileDirname}\\${fileBasenameNoExtension}.exe",
+		"-I",
+		"C:\\vcpkg\\installed\\x64-windows\\include",
+		"-L",
+		"C:\\vcpkg\\installed\\x64-windows\\lib",
+		"-luv",
+		"-lws2_32",
+		"-liphlpapi",
+		"-luserenv",
     ],
   ```
 - Sample "arg" for linux ubuntu building environment (task.json)
