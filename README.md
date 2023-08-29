@@ -20,7 +20,7 @@ A socket-network library with MIT-license, containing simple practices across Li
       }```
     - server.c code:
       ```c
-      - int main(int argc, char **argv){
+      int main(int argc, char **argv){
 
           if (argc != 2) {
 
@@ -33,17 +33,23 @@ A socket-network library with MIT-license, containing simple practices across Li
           int port = atoi(argv[1]);
       }```
   2. Compile server/client using gcc:
-      
-      gcc server.c -o [anyname, ex:server] 
-      
-      gcc client.c -o [anyname, ex:client]
+    ```bash
+    gcc server.c -o server   
+    gcc client.c -o client
+    ```
   3. Execute and host server on targeting IP and port number:
-    - ./server 127.0.0.1 7000
+    ```bash
+    ./server 127.0.0.1 7000
+    ```
   4. Execute connecting client on targeting server IP with another terminal:
-    - ./client 
+    ```bash
+    ./client []
+    ```
     - Execution result should be shown like this:
-      - [+]Data recv: Call from client 1!
-      - [+]Data send: Transmission sucessful. You are using UDP server.  
+    ```bash  
+    [+]Data recv: Call from client 1!
+    [+]Data send: Transmission sucessful. You are using UDP server.  
+    ```
   5. End server and client program with ctrl+c command
 
 # LibuvTCP 
@@ -58,7 +64,7 @@ A socket-network library with MIT-license, containing simple practices across Li
 - User Instruction using multithreadedServer.c and bigClient.c as example:
   1. Check and revise Log data storage directory in single/multi-threadedServer.c:
     ```c
-    - void process_xml_and_write(const char *xml_data, size_t xml_data_len) {
+    void process_xml_and_write(const char *xml_data, size_t xml_data_len) {
     static int file_number = 1;
     char filename[100];
     
@@ -74,22 +80,27 @@ A socket-network library with MIT-license, containing simple practices across Li
     }......rest of the code remain the same......
     ```
   2. Compile server and client using gcc or vscode(refer to building environment session for more setting details):
-    - gcc multithreadedServer.c -o multithreadedServer -luv 
-    - gcc bigClient.c -o bigClient -luv
+    ```bash
+    gcc multithreadedServer.c -o multithreadedServer -luv 
+    gcc bigClient.c -o bigClient -luv
+    ```
   3. Execute Server and Client, below is sample result:
-    - ./multithreadedServer
+    ```bash
+    ./multithreadedServer
         dummy callback
         dummy callback
-        dummy callback......many more dummy messages......
+        dummy callback
         Server listening on port 7000...
-    - ./bigClient
-      - Client connected to server 127.0.0.1:7000
+    ./bigClient
+      Client connected to server 127.0.0.1:7000
+    ```
     - Server side terminal result:
+    ```bash
         dummy callback
         Received call from client: <xml>Some XML data goes here.</xml>
         Log file /home/vboxuser/Projects/TCP/output/output1.xml transmission completed!
-        Received call from client: <xml>Some XML data goes here.</xml>...many more successful log transmission...
-
+        Received call from client: <xml>Some XML data goes here.</xml>
+    ```
   4. End bigClient.c program with ctrl+c to stop transfering log string, server will be back in listening state 
   5. End server.c program with ctrl+c to terminate program
 
@@ -97,14 +108,17 @@ A socket-network library with MIT-license, containing simple practices across Li
 - Window 10 version of libuv TCP practice, but only practice with client, no windows server available.
 - Can be used to transfer data with linux ubuntu server code in this repository, cross-platform available
 - User instruction when using winClient.c:
-  - gcc multithreadedServer.c -o multihreadedServer -luv (can be replaced with singleThreaded if wanted)
-  - gcc winClient.c -o winClient -luv
+  ```bash
+  gcc multithreadedServer.c -o multihreadedServer -luv (can be replaced with singleThreaded if wanted)
+  gcc winClient.c -o winClient -luv
+  ```
 - Execution result:
-  - Client: Client connected to server 140.92.164.91:7000
+  ```bash
+  Client: Client connected to server 140.92.164.91:7000
     Server: New connection established
     Received call from client: <Event><EventID>12345</EventID><Source>Application</Source><Message>Sample event log message</Message></Event>
     Log file /home/vboxuser/Projects/TCP/output/output1.xml transmission completed!
-
+  ```
 # images
   - Highlighted photos during early-stage testing using socket standard library, for reference
  
@@ -123,23 +137,30 @@ A socket-network library with MIT-license, containing simple practices across Li
   - Support Common Log formats, including syslog, multilog, and windows_event_logs structured log data
 - User Instruction for digesting process between server.c and client.c
   - Change the socket configuration of LogParserServer.c to fit your hosting environment:
-    - #define DEFAULT_PORT 7000
+    ```c
+      #define DEFAULT_PORT 7000
       #define DEFAULT_BACKLOG 128 // Change this to allow pending connections during multiple log data transmission
       #define MAX_FILENAME_LEN 100 
       #define FILENAME_PREFIX "/home/vboxuser/Projects/LogDigestLibuv_linux/output" // Change this to your desired log data file saving path after transmission
+    ```
   - Change the socket configuration of DigestClient.c to fit your environment:
-    - #define DEFAULT_PORT 7000
+    ```c  
+      #define DEFAULT_PORT 7000
       #define DEFAULT_IP "127.0.0.1" // Change this to your server IP if needed
       #define SEND_INTERVAL_MS 1000  // Adjust the interval as needed, 1000 milisecond per 1 xml writing for default
+    ```
   - Change the targeted listening path for DigestClient.c
+    ```c
     - ld_watch_multilog("/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log"); //Change the " " path to your multi.log file path
+    ```bash
   - Executing server-client transmission:
-    - gcc LogParseServer.c -o LogParserServer -luv
-    - gcc DigestClient.c logdigest.c -o DigestClient -luv
-    - ./LogParserServer 
+    gcc LogParseServer.c -o LogParserServer -luv
+    gcc DigestClient.c logdigest.c -o DigestClient -luv
+    ./LogParserServer 
       Server listening on port 7000...
-    - ./DigestClient 
+    ./DigestClient 
       Client connected to server 127.0.0.1:7000
+    ```
     - Go to your multilog directory, open multi.log file using notepad or vscode or any text editor
       - Sample log file content:
         - @400000003b4a39c2cafebabe   fatal: message\twith\ttabs
@@ -153,16 +174,20 @@ A socket-network library with MIT-license, containing simple practices across Li
           @400000003b4a39c2cff ads
           @400000033d9a6b282f3dab78 bad request 
       - Press ctrl+S to load the current cotent log data, transmission result should be shown:
-        - Received call from client: /home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - fatal: message\twith\ttabs/ home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - fatal: message\twith\ttabs/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - some message with spaces/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - coolmsg/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - some msg/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafeffff - asdfasdfasdf/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000033d9a6b282f3dab78 - bad request 
+        ```bash
+        Received call from client: /home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - fatal: message\twith\ttabs/ home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - fatal: message\twith\ttabs/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - some message with spaces/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - coolmsg/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - some msg/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000003b4a39c2cafeffff - asdfasdfasdf/home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @400000033d9a6b282f3dab78 - bad request 
         Log file /home/vboxuser/Projects/LogDigestLibuv_linux/output/output2023-08-29.xml transmission completed!
+        ```
     - Add "@4000000783c049d55a7439ee Service disabled" this to the bottom line of code, make sure the format is correct (" "spacing, @ symbol should be same as above)
     - When finished editing, press ctrl+S to save the file, updated transmission result should be shown:
+      ```bash
       - Log file /home/vboxuser/Projects/LogDigestLibuv_linux/output/output2023-08-29.xml transmission completed!
         No client message received in one minute. Sleeping...
         No client message received in one minute. Sleeping...
         No client message received in one minute. Sleeping...
         Received call from client: /home/vboxuser/Projects/LogDigestLibuv_linux/multiLogCollector/multi.log - @4000000783c049d55a7439ee - Service disabled
         Log file /home/vboxuser/Projects/LogDigestLibuv_linux/output/output2023-08-29.xml transmission completed!
+      ```
     - To check the log transmission into file, you can check the path of your /output you specified, there should be saved .xml format log file according to timestamp:
       - example name of file should be like this: output2023-08-29.xml
 
@@ -171,7 +196,8 @@ A socket-network library with MIT-license, containing simple practices across Li
 2. Include "logdigest.h", "cJSON.h" in your working directory
 3. gcc compile with "logdigest.c", "cJSON.c", "-luv",
 4. Sample "arg" for windows 10 environment (task.json)
-  -  "args": [
+  ```json
+  "args": [
 				"-g",
                 "${file}",
                 "-o",
@@ -185,8 +211,10 @@ A socket-network library with MIT-license, containing simple practices across Li
                 "-liphlpapi",
                 "-luserenv",
     ],
+  ```
 - Sample "arg" for linux ubuntu building environment (task.json)
-  - "args": [
+  ```json
+  "args": [
 				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",
@@ -196,6 +224,7 @@ A socket-network library with MIT-license, containing simple practices across Li
 				"logdigest.c",
 				"cJSON.c",
 			], 
+  ```
 
 # cJSONLogDigest_linux
 - New features of dynamic changing IP setting of DigestCLient.c
@@ -212,18 +241,23 @@ A socket-network library with MIT-license, containing simple practices across Li
     - { "IP": "127.0.0.1", "Port": 7000 } // change the value of "IP" and "Port" numbers to fit your network environment
     ```
   - Start executing LogParser and DigestClient:
-    - gcc LogParseServer.c -o LogParseServer -luv
-    - gcc DigestClient.c logdigest.c cJSON.c -o DigestClient -luv
-    - ./LogParseServer
+    ```bash
+    gcc LogParseServer.c -o LogParseServer -luv
+    gcc DigestClient.c logdigest.c cJSON.c -o DigestClient -luv
+    ./LogParseServer
       Server listening on port 7000...
-    - ./DigestClient 
+    ./DigestClient 
       Client connected to server 140.92.164.91:7000
+    ```  
     - Ctrl+S on multi.log file
       - Server terminal:
+        ```bash
         New connection established
         Received call from client: /home/vboxuser/Projects/cJSONLogDigest_linux/multiLogCollector/multi.log - @400000003b4a39c2cafebabe - fatal: message\twith\ttab
         Log file /home/vboxuser/Projects/LogDigestLibuv_linux/output/output2023-08-29.xml transmission completed!
+        ```
     - Check your /path/to/output to find newly generated .xml log file, sample output log file name: output2023-08-29
+
 # sslAuthServer (Beta)
 - Basic scanf username/password login feature available
 - Certificate and private Key authentication is not finished yet, to be developed
@@ -246,11 +280,14 @@ A socket-network library with MIT-license, containing simple practices across Li
     #define SERVER_PORT 8081
     ```
   - Generate key, certificate and signing certificate before executing program
-    - cd myCertPem (if it doesn't exist, create a folder named myCertPem in your project directory)
-    - openssl genpkey -algorithm RSA -out server.key
+    ```bash
+    cd myCertPem (if it doesn't exist, create a folder named myCertPem in your project directory)
+    openssl genpkey -algorithm RSA -out server.key
     ..+......+.+......+.....+....+..............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+.....+.......+...........+....+......+..+.+......+.....+.+.........+.....+...+.......+......and more encryped message
-    - openssl req -new -key server.key -out server.csr
+    openssl req -new -key server.key -out server.csr
+    ```
     - Certificate configuration:
+      ```bash
       Country Name (2 letter code) [AU]:TW
       State or Province Name (full name) [Some-State]:
       Locality Name (eg, city) []:
@@ -263,10 +300,13 @@ A socket-network library with MIT-license, containing simple practices across Li
       to be sent with your certificate request
       A challenge password []:1234  // enter any value of at least 4 bytes
       An optional company name []:  // can be left balnk
+      ```
     - Signing Certificate with key:
-      - openssl x509 -req -in server.csr -signkey server.key -out server.crt
+      ```bash
+      openssl x509 -req -in server.csr -signkey server.key -out server.crt
         Certificate request self-signature ok
         subject=C = TW, ST = Some-State, O = Internet Widgits Pty Ltd
+      ```
     - In myCertPem folder, you will see three files, including server.key, server.csr, server.crt
       - Change server.key file name to private_key.key, and server.crt to certificate.crt
       - If you want to customize your own name, you can change this part of code to monitor different path and file name:
@@ -275,20 +315,27 @@ A socket-network library with MIT-license, containing simple practices across Li
           #define CERTIFICATE_FILE "/home/vboxuser/Projects/sslAuthServer/myCertPem/certificate.crt" // change the path of certificate"" here if wanted
           #define PRIVATE_KEY_FILE "/home/vboxuser/Projects/sslAuthServer/myPrivatekey/private_key.key" // change the path of private key "" here if wanted
         ```  
-  - cd .. (move back to the project directory)
-  - gcc sslServer.c -o sslServer -lssl -lcrypto
-  - gcc sslClient.c -o sslClient -lssl -lcrypto
-  - sudo ./sslServer 8081
-    
-  - ./sslClient 127.0.0.1 8081
+  - Continue executing commands in terminal to start the scanf login authentication program
+    ```bash
+    cd .. 
+    gcc sslServer.c -o sslServer -lssl -lcrypto
+    gcc sslClient.c -o sslClient -lssl -lcrypto
+    sudo ./sslServer 8081
+    ./sslClient 127.0.0.1 8081
     Enter the User Name : 
-    // server side for the present: 
+    ```
+    // server side for the present:
+    ```bash 
     Connection: 127.0.0.1:40026
     No certificates.
-  - Enter the User Name : aticle
-
+    ```
+    // client side to be processed with user input 
+    ```bash
+    Enter the User Name : aticle
     Enter the Password : 123
+    ```
   - Client execution result:
+    ```bash
     Connected with TLS_AES_256_GCM_SHA384 encryption
 
     Server certificates:
@@ -298,8 +345,11 @@ A socket-network library with MIT-license, containing simple practices across Li
     Issuer: /C=TW/ST=Some-State/O=Internet Widgits Pty Ltd
 
     Received: "<\Body>                               <Name>aticleworld.com</Name>                 <year>1.5</year>                 <BlogType>Embedede and c\c++<\BlogType>                 <Author>amlendra<Author>                 <\Body>"
+    ```
   - Server execution result:
+    ```bash
     Client msg: "<Body>                               <UserName>aticle<UserName>                 <Password>123<Password>                 <\Body>"
+    ```
   - If you want to change the login User name or Password, you can modify code in sslServer:
     ```c
         - void Servlet(SSL* ssl) /* Serve the connection -- threadable */
