@@ -192,41 +192,6 @@ A socket-network library with MIT-license, containing simple practices across Li
     - To check the log transmission into file, you can check the path of your /output you specified, there should be saved .xml format log file according to timestamp:
       - example name of file should be like this: output2023-08-29.xml
 
-# cJSONLogDIgest_linux Building Environment:
-1. Using vcpkg (windows 10)for library management for include path, bin (uv.dll), include (uv, uv.h) , lib (uv.lib,) 
-2. Include "logdigest.h", "cJSON.h" in your working directory
-3. gcc compile with "logdigest.c", "cJSON.c", "-luv",
-4. Sample "arg" for windows 10 environment (task.json)
-  ```json
-  "args": [
-		"-g",
-		"${file}",
-		"-o",
-		"${fileDirname}\\${fileBasenameNoExtension}.exe",
-		"-I",
-		"C:\\vcpkg\\installed\\x64-windows\\include",
-		"-L",
-		"C:\\vcpkg\\installed\\x64-windows\\lib",
-		"-luv",
-		"-lws2_32",
-		"-liphlpapi",
-		"-luserenv",
-    ],
-  ```
-- Sample "arg" for linux ubuntu building environment (task.json)
-  ```json
-  "args": [
-		"-fdiagnostics-color=always",
-		"-g",
-		"${file}",
-		"-o",
-		"${fileDirname}/${fileBasenameNoExtension}",
-		"-luv",
-		"logdigest.c",
-		"cJSON.c",
-	], 
-  ```
-
 # cJSONLogDigest_linux
 - New features of dynamic changing IP setting of DigestCLient.c
 - Chagne IP, port numbers without compiling, using cJSON library
@@ -373,6 +338,56 @@ A socket-network library with MIT-license, containing simple practices across Li
                     // ...and many more source code in sslServer.c...
     }
     ```
+# cJSONLogDIgest_linux Building Environment (main featured program):
+1. Include "logdigest.h", "cJSON.h" in your working directory
+2. gcc compile with "logdigest.c", "cJSON.c", "-luv",
+3. Linking Library Version:
+  - Linux [22.04.2 LTS]
+    - Libuv
+    ```bash
+      ii  libuv1:amd64                               1.43.0-1                                amd64        asynchronous event notification library - runtime library
+      ii  libuv1-dev:amd64                           1.43.0-1                                amd64        asynchronous event notification library - development files
+    ```
+    - cJSON [Releases 46 version 1.7.16 dated on Jul 5 2023]
+  - Windows 10 [10.0.19045.3086]
+    - Vcpkg library version
+      ```bash
+      vcpkg package management program version 2023-07-19-814b7ec837b59f1c8778f72351c1dd7605983cd2
+      ```
+    - Libuv library version
+      ```bash
+      libuv:x64-windows                                 1.46.0              libuv is a multi-platform support library with a...
+      ```
+4. Sample "arg" for windows 10 environment (task.json)
+  ```json
+  "args": [
+		"-g",
+		"${file}",
+		"-o",
+		"${fileDirname}\\${fileBasenameNoExtension}.exe",
+		"-I",
+		"C:\\vcpkg\\installed\\x64-windows\\include",
+		"-L",
+		"C:\\vcpkg\\installed\\x64-windows\\lib",
+		"-luv",
+		"-lws2_32",
+		"-liphlpapi",
+		"-luserenv",
+	],
+  ```
+- Sample "arg" for linux ubuntu building environment (task.json)
+  ```json
+  "args": [
+		"-fdiagnostics-color=always",
+		"-g",
+		"${file}",
+		"-o",
+		"${fileDirname}/${fileBasenameNoExtension}",
+		"-luv",
+		"logdigest.c",
+		"cJSON.c",
+	], 
+  ```
 
 
 
