@@ -199,8 +199,8 @@ A socket-network library with MIT-license, containing simple practices across Li
 4. Sample "arg" for windows 10 environment (task.json)
   ```json
   "args": [
-		"-g",
                 "${file}",
+		"-g",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I",
@@ -241,7 +241,7 @@ A socket-network library with MIT-license, containing simple practices across Li
     ```
   - Change the serverConfig.json content to fit your environment:
     ```json
-    { "IP": "127.0.0.1", "Port": 7000 } // change the value of "IP" and "Port" numbers to fit your network environment
+    { "IP": "127.0.0.1", "Port": 7000 }
     ```
   - Start executing LogParser and DigestClient:
     ```bash
@@ -267,14 +267,14 @@ A socket-network library with MIT-license, containing simple practices across Li
 - Building Environment (vscode):
   ```json
   "args": [
-				"-fdiagnostics-color=always",
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}",
-				"-lssl",
-				"-lcrypto",
-			],
+		"-fdiagnostics-color=always",
+		"-g",
+		"${file}",
+		"-o",
+		"${fileDirname}/${fileBasenameNoExtension}",
+		"-lssl",
+		"-lcrypto",
+		],
   ```      
 - User Instruction for basic scanf login feature:
   - Change the IP/port number macro to fit your network environment:
@@ -328,12 +328,12 @@ A socket-network library with MIT-license, containing simple practices across Li
     ./sslClient 127.0.0.1 8081
     Enter the User Name : 
     ```
-    - server side for the current state:
+    - server side terminal for the current state:
     ```bash 
     Connection: 127.0.0.1:40026
     No certificates.
     ```
-    - client side to be processed with user input 
+    - client side terminal to be processed with user input 
     ```bash
     Enter the User Name : aticle
     Enter the Password : 123
