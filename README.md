@@ -338,10 +338,8 @@ A socket-network library with MIT-license, containing simple practices across Li
                     // ...and many more source code in sslServer.c...
     }
     ```
-# cJSONLogDIgest_linux Building Environment (main featured program):
-1. Include "logdigest.h", "cJSON.h" in your working directory
-2. gcc compile with "logdigest.c", "cJSON.c", "-luv",
-3. Linking Library Version:
+# Building Environment Using Visual Studio Code:
+1. Using Visual Studio Code built-in task.json Configuration
   - Linux [22.04.2 LTS]
     - Libuv
     ```bash
@@ -358,7 +356,7 @@ A socket-network library with MIT-license, containing simple practices across Li
       ```bash
       libuv:x64-windows                                 1.46.0              libuv is a multi-platform support library with a...
       ```
-4. Sample "arg" for windows 10 environment (task.json)
+2. Sample "arg" for windows 10 environment (task.json)
   ```json
   "args": [
 		"-g",
@@ -388,7 +386,10 @@ A socket-network library with MIT-license, containing simple practices across Li
 		"cJSON.c",
 	], 
   ```
-
+- If you do not want to use built-in Visual Studio Code Buidling tool, you can compile the program using pure gcc:
+	1. Include "logdigest.h", "cJSON.h" in your working directory
+	2. gcc compile with "logdigest.c", "cJSON.c", "-luv",
+	3. Linking Library Version:
 
 
 
