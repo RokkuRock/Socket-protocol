@@ -2,6 +2,58 @@
 
 A socket-network library with MIT-license, containing simple practices across Linux and windows platforms, including **Windows 10**, and linux **ubuntu** distro. All of the practices are written in pure C library providing server-client data transmission, with features such as **Log data formatting**, data parsing, and log data minitoring and data transmission.
 
+# Building Environment Using Visual Studio Code:
+1. Using Visual Studio Code built-in task.json Configuration
+  - Linux [22.04.2 LTS]
+    - Libuv
+    ```bash
+      ii  libuv1:amd64                               1.43.0-1                                amd64        asynchronous event notification library - runtime library
+      ii  libuv1-dev:amd64                           1.43.0-1                                amd64        asynchronous event notification library - development files
+    ```
+    - cJSON [Releases 46 version 1.7.16 dated on Jul 5 2023]
+  - Windows 10 [10.0.19045.3086]
+    - Vcpkg library version
+      ```bash
+      vcpkg package management program version 2023-07-19-814b7ec837b59f1c8778f72351c1dd7605983cd2
+      ```
+    - Libuv library version
+      ```bash
+      libuv:x64-windows                                 1.46.0              libuv is a multi-platform support library with a...
+      ```
+2. Sample "arg" for windows 10 environment (task.json)
+  ```json
+  "args": [
+		"-g",
+		"${file}",
+		"-o",
+		"${fileDirname}\\${fileBasenameNoExtension}.exe",
+		"-I",
+		"C:\\vcpkg\\installed\\x64-windows\\include",
+		"-L",
+		"C:\\vcpkg\\installed\\x64-windows\\lib",
+		"-luv",
+		"-lws2_32",
+		"-liphlpapi",
+		"-luserenv",
+	],
+  ```
+- Sample "arg" for linux ubuntu building environment (task.json)
+  ```json
+  "args": [
+		"-fdiagnostics-color=always",
+		"-g",
+		"${file}",
+		"-o",
+		"${fileDirname}/${fileBasenameNoExtension}",
+		"-luv",
+		"logdigest.c",
+		"cJSON.c",
+	], 
+  ```
+- If you do not want to use built-in Visual Studio Code Buidling tool, you can compile the program using pure gcc:
+	1. Include "logdigest.h", "cJSON.h" in your working directory
+	2. gcc compile with "logdigest.c", "cJSON.c", "-luv",
+
 # UDP
 - Standard Library Practices for server-client data transmission
   - Linux Ubuntu [22.04.2 LTS]
@@ -338,54 +390,4 @@ A socket-network library with MIT-license, containing simple practices across Li
                     // ...and many more source code in sslServer.c...
     }
     ```
-# Building Environment Using Visual Studio Code:
-1. Using Visual Studio Code built-in task.json Configuration
-  - Linux [22.04.2 LTS]
-    - Libuv
-    ```bash
-      ii  libuv1:amd64                               1.43.0-1                                amd64        asynchronous event notification library - runtime library
-      ii  libuv1-dev:amd64                           1.43.0-1                                amd64        asynchronous event notification library - development files
-    ```
-    - cJSON [Releases 46 version 1.7.16 dated on Jul 5 2023]
-  - Windows 10 [10.0.19045.3086]
-    - Vcpkg library version
-      ```bash
-      vcpkg package management program version 2023-07-19-814b7ec837b59f1c8778f72351c1dd7605983cd2
-      ```
-    - Libuv library version
-      ```bash
-      libuv:x64-windows                                 1.46.0              libuv is a multi-platform support library with a...
-      ```
-2. Sample "arg" for windows 10 environment (task.json)
-  ```json
-  "args": [
-		"-g",
-		"${file}",
-		"-o",
-		"${fileDirname}\\${fileBasenameNoExtension}.exe",
-		"-I",
-		"C:\\vcpkg\\installed\\x64-windows\\include",
-		"-L",
-		"C:\\vcpkg\\installed\\x64-windows\\lib",
-		"-luv",
-		"-lws2_32",
-		"-liphlpapi",
-		"-luserenv",
-	],
-  ```
-- Sample "arg" for linux ubuntu building environment (task.json)
-  ```json
-  "args": [
-		"-fdiagnostics-color=always",
-		"-g",
-		"${file}",
-		"-o",
-		"${fileDirname}/${fileBasenameNoExtension}",
-		"-luv",
-		"logdigest.c",
-		"cJSON.c",
-	], 
-  ```
-- If you do not want to use built-in Visual Studio Code Buidling tool, you can compile the program using pure gcc:
-	1. Include "logdigest.h", "cJSON.h" in your working directory
-	2. gcc compile with "logdigest.c", "cJSON.c", "-luv",
+
