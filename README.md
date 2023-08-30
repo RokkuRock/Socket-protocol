@@ -1,6 +1,6 @@
-# Socket Protocol
+# Socket Protocol (Log transmission Library)
 
-A socket-network library with MIT-license, containing simple practices across Linux and windows platforms, including **Windows 10**, and linux **ubuntu** distro. All of the practices are written in pure C library providing server-client data transmission, with features such as **Log data formatting**, data parsing, and log data minitoring and data transmission.
+A socket-network library with **MIT-license**, containing simple practices across Linux and windows platforms, including **Windows 10**, and linux **ubuntu** distro. All of the practices are written in pure C library providing **server-client Log data transmission**, with features such as **Log data formatting**, **Log data parsing**, and **log data file minitoring**.
 
 # Building Environment Using Visual Studio Code:
 1. Using Visual Studio Code built-in task.json Configuration
