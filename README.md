@@ -389,11 +389,3 @@ A socket-network library with MIT-license, containing simple practices across Li
 - If you do not want to use built-in Visual Studio Code Buidling tool, you can compile the program using pure gcc:
 	1. Include "logdigest.h", "cJSON.h" in your working directory
 	2. gcc compile with "logdigest.c", "cJSON.c", "-luv",
-	3. Linking Library Version:
-
-
-
-
-
-
-
